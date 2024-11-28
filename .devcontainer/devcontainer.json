@@ -2,14 +2,26 @@
   "name": "Java Development Environment",
   "image": "mcr.microsoft.com/vscode/devcontainers/java:11",
   "settings": {
-    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64"
+    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64",
+    "java.configuration.runtimes": [
+      {
+        "name": "JavaSE-11",
+        "path": "/usr/lib/jvm/java-11-openjdk-amd64"
+      }
+    ],
+    "java.import.gradle.enabled": true,
+    "java.import.maven.enabled": true
   },
   "extensions": [
     "vscjava.vscode-java-pack",
     "redhat.java",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "vscjava.vscode-maven"
   ],
   "forwardPorts": [8080],
   "remoteUser": "vscode",
-  "postCreateCommand": "mvn clean install"
+  "postCreateCommand": "mvn clean install",
+  "features": {
+    "docker-in-docker": "latest" 
+  }
 }
